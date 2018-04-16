@@ -5,6 +5,9 @@ import numpy as np
 from PIL import Image
 
 upload_dir = os.path.join('static', 'uploads')
+images_dir = os.path.join(upload_dir, 'images')
+thumbnails_dir = os.path.join(upload_dir, 'thumbnails')
+
 thumbnail_size = 256, 256
 
 def mkdir_p(path):
@@ -78,17 +81,19 @@ def write_image_and_thumbnail(dataset, filename):
     pixel_data = normalize_and_scale(dataset.pixel_array)
 
     # prepare and save full size image
+    mkdir_p(images_dir)
     image = Image.fromarray(pixel_data)
     image_rgb = image.convert('RGB')
     image_name = '{}.jpg'.format(filename)
-    image_path = os.path.join(upload_dir, 'images', image_name)
+    image_path = os.path.join(images_dir, image_name)
     image_rgb.save(image_path, 'JPEG')
 
     # crop and save thumbnail image
+    mkdir_p(thumbnails_dir)
     cropped_data = crop_square_image(pixel_data)
     thumbnail_image = Image.fromarray(cropped_data)
     thumbnail_image_rgb = thumbnail_image.convert('RGB')
     thumbnail_image_rgb.thumbnail(thumbnail_size, Image.ANTIALIAS)
-    thumbnail_path = os.path.join(upload_dir, 'thumbnails', image_name)
-    thumbnail_image_rgb.save(thumbnail_path, "JPEG")
+    thumbnail_path = os.path.join(thumbnails_dir, image_name)
+    thumbnail_image_rgb.save(thumbnail_path, 'JPEG')
     return image_name
