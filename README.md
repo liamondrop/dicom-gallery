@@ -8,7 +8,7 @@ Simple gallery to upload, parse, and display images and data extracted from the 
 - Python >= 3.5
 - PyDicom (provides an interface to work with DICOM images)
 - Pillow (to manage saving and resizing image data)
-- Numpy
+- Numpy (to normalize the image values and crop the thumbnail)
 - Flask
 - SqlAlchemy
 
