@@ -14,7 +14,7 @@ Simple gallery to upload, parse, and display images and data extracted from the 
 
 In order to keep the environment and requirements consistent, this project includes an environment.yml file, which defines the version of Python to use, as well as the major dependencies. I recommend using [Conda](https://conda.io/docs/index.html) to manage your environment.
 
-To quickly install dependencies with conda, type the following at the command prompt in your terminal:
+To quickly create the environment and install dependencies, type the following at the command prompt in your terminal:
 
 ```
 conda env create -f environment.yml
