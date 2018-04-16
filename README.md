@@ -2,7 +2,7 @@
 Simple gallery to upload, parse, and display images and data extracted from the [DICOM](https://en.wikipedia.org/wiki/DICOM) format.
 
 ## About
-This project provides a very simple server that allows a user to select a file in the `application/dcm` format, a DICOM file, to be uploaded, saved and its relevant data extracted. The pixel data stored in the DICOM file is minimally processed and normalized to ensure that the pixel intensity values fall within the 0-255 range supported by standard unisigned 8-bit integer datatypes used by normal images. Both color and grayscale images are supported.
+This project provides a very simple server that allows a user to select a file in the `application/dicom` format, a DICOM file, to be uploaded, saved and its relevant data extracted. The pixel data stored in the DICOM file is minimally processed and normalized to ensure that the pixel intensity values fall within the 0-255 range supported by standard unisigned 8-bit integer datatypes used by normal images. Both color and grayscale images are supported.
 
 Additionally, the accompanying data is displayed on a detail page, along with the full-sized image in the following format:
 
