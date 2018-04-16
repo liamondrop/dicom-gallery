@@ -1,4 +1,4 @@
-# dicom-gallery
+# Dicom Gallery
 Simple gallery to upload, parse, and display images and data extracted from the [DICOM](https://en.wikipedia.org/wiki/DICOM) format
 
 ## Getting started
