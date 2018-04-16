@@ -1,4 +1,4 @@
-# Dicom Gallery
+# DICOM Gallery
 Simple gallery to upload, parse, and display images and data extracted from the [DICOM](https://en.wikipedia.org/wiki/DICOM) format
 
 ## Getting started
@@ -27,3 +27,5 @@ source activate dicomenv
 ```
 
 To start the server, type `python app.py` in the terminal and navigate to `0.0.0.0:5000` in your browser.
+
+This project was developed in part with the help of the data made available at the [Visible Human Project](https://mri.radiology.uiowa.edu/visible_human_datasets.html).
