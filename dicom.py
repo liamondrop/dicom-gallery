@@ -79,21 +79,21 @@ def write_image_and_thumbnail(dataset, filename):
         image name (string)
     """
     pixel_data = normalize_and_scale(dataset.pixel_array)
+    image_name = '{}.jpg'.format(filename)
 
     # prepare and save full size image
     mkdir_p(images_dir)
+    image_path = os.path.join(images_dir, image_name)
     image = Image.fromarray(pixel_data)
     image_rgb = image.convert('RGB')
-    image_name = '{}.jpg'.format(filename)
-    image_path = os.path.join(images_dir, image_name)
     image_rgb.save(image_path, 'JPEG')
 
     # crop and save thumbnail image
     mkdir_p(thumbnails_dir)
+    thumbnail_path = os.path.join(thumbnails_dir, image_name)
     cropped_data = crop_square_image(pixel_data)
     thumbnail_image = Image.fromarray(cropped_data)
     thumbnail_image_rgb = thumbnail_image.convert('RGB')
     thumbnail_image_rgb.thumbnail(thumbnail_size, Image.ANTIALIAS)
-    thumbnail_path = os.path.join(thumbnails_dir, image_name)
     thumbnail_image_rgb.save(thumbnail_path, 'JPEG')
     return image_name
