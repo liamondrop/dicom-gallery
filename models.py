@@ -1,4 +1,4 @@
-from sqlalchemy import Column, ForeignKey, Integer, String, DateTime, func
+from sqlalchemy import Column, Integer, String, DateTime, func
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import scoped_session, sessionmaker, relationship
 from sqlalchemy import create_engine
@@ -18,15 +18,5 @@ class Image(Base):
     date_uploaded = Column(DateTime, default=func.now())
     filename = Column(String)
     dicom_data = Column(String)
-
-    @property
-    def serialize(self):
-        """Return object data in easily serializeable format"""
-        return {
-            'id': self.id,
-            'date_uploaded': self.date_uploaded,
-            'filename': self.filename,
-            'dicom_data': self.dicom_data,
-        }
 
 Base.metadata.create_all(engine)
