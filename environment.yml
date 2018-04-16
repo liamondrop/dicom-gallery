@@ -1,14 +1,14 @@
-name: pydicomenv
+name: dicomenv
 channels:
-- conda-forge
-- anaconda
-- defaults
+  - conda-forge
+  - anaconda
+  - defaults
 dependencies:
-- python>=3.5
-- pillow
-- pydicom
-- sqlite
-- numpy
-- pip:
+  - python>=3.4
+  - pillow
+  - pydicom
+  - sqlite
+  - numpy
   - flask
-  - sqlalchemy
+  - pip:
+    - sqlalchemy
