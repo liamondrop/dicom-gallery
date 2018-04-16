@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DICOM Image Gallery</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="//cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}">
+</head>
+
+<body>
+  <div class="container">
+    <ul class="flash">
+      {% with messages=get_flashed_messages() %}
+      {% for message in messages %}
+      <li><a href="/">{{ message }} &times;</a></li>
+      {% endfor %}
+      {% endwith %}
+    </ul>
+
+    <div class="header">
+      <h1><a href="/">DICOM Image Gallery</a></h1>
+    </div>
+
+    {% block body %}
+    {% endblock %}
+  </div>
+</body>
+</html>

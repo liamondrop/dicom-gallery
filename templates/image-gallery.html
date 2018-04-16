@@ -1,55 +1,31 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Dicom Image Gallery</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
-    <link rel="stylesheet" href="//cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
-    <link rel="stylesheet" href="//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
-  </head>
+{% extends "base.html" %}
+{% block body %}
+<form action="{{url_for('new_image')}}" method="post" enctype="multipart/form-data">
+  <fieldset>
+    <div>
+      <label for="file">Choose DICOM Image</label>
+      <input type="file" name="file" accept="application/dicom" required />
+    </div>
+    <input class="button-primary" type="submit" value="Upload" />
+  </fieldset>
+</form>
 
-  <body>
-    <div class="container">
-      <div class="header">
-        <h1><a href="/">Dicom Image Gallery</a></h1>
-      </div>
-
-      <ul class="flash">
-        {% with messages=get_flashed_messages() %}
-        {% if messages %}
-        {% for message in messages %}
-        <li><a href="{{url_for('image_gallery')}}">{{ message }} &times;</a></li>
-        {% endfor %}
-        {% endif %}
-        {% endwith %}
-      </ul>
-
-      <form action="{{url_for('new_image')}}" method="post" enctype="multipart/form-data">
-        <fieldset>
-          <div>
-            <label for="file">Choose DICOM Image</label>
-            <input type="file" name="file" accept="application/dicom" required />
-          </div>
-          <input class="button-primary" type="submit" value="Upload" />
-        </fieldset>
-      </form>
-
-      <div class="container">
-        {% for image in images %}
-        {% if loop.index % 5 == 1 %}
-        <div class="row">
-          {% endif -%}
-          <div class="column column-20">
-            <a href="{{url_for('image_detail', image_id=image.id)}}">
-              <img src="{{url_for('static', filename='uploads/thumbnails/{}'.format(image.filename))}}" />
-              <span>{{ image.filename }}</span>
-            </a>
-          </div>
-          {% if loop.index % 5 == 0 %}
-        </div>
-        {% endif -%}
-        {% endfor %}
+<div class="container">
+  {% for image in images %}
+  {% if loop.index % 5 == 1 %}
+  <div class="row">
+  {% endif -%}
+    <div class="column column-20">
+      <div class="image-frame">
+        <a href="{{url_for('image_detail', image_id=image.id)}}">
+          <img src="{{url_for('static', filename='uploads/thumbnails/{}'.format(image.filename))}}" />
+          <div class="image-label" title="{{ image.filename }}">{{ image.filename }}</div>
+        </a>
       </div>
     </div>
-  </body>
-</html>
+  {% if loop.index % 5 == 0 %}
+  </div>
+  {% endif -%}
+  {% endfor %}
+</div>
+{% endblock %}

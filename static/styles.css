@@ -1,1 +1,21 @@
+.image-frame {
+  margin: 0 auto 2.0rem;
+  padding: 0.75rem;
+  background: #f4f5f6;
+  border: 1px solid #e4e5e6;
+}
 
+.image-label {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.aligner {
+  display: flex;
+  align-items: center;
+}
+
+.aligned-item {
+  max-width: 100%;
+}

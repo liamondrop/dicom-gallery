@@ -1,40 +1,12 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Dicom Image Gallery</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
-    <link rel="stylesheet" href="//cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
-    <link rel="stylesheet" href="//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
-  </head>
-  <body>
-    <div class="container">
-      <div class="header">
-        <h1><a href="/">Dicom Image Gallery</a></h1>
-
-        <h2>{{ image.name }}</h2>
-      </div>
-
-      <div class='flash'>
-        {% with messages = get_flashed_messages() %}
-        {% if messages %}
-          <ul>
-            {% for message in messages %}
-            <li><strong>{{ message }}</strong></li>
-            {% endfor %}
-          </ul>
-        {% endif %}
-        {% endwith %}
-      </div>
-
-      <div class="container">
-        <div class="row">
-          <div class="column column-50 column-offset-25">
-            <img src="{{url_for('static', filename='uploads/images/{}'.format(image.filename))}}" />
-          </div>
-        </div>
-        <pre><code>{{ image.dicom_data }}</code></pre>
-      </div>
+{% extends "base.html" %}
+{% block body %}
+<div class="container">
+  <div class="aligner">
+    <div class="image-frame aligned-item">
+      <img src="{{url_for('static', filename='uploads/images/{}'.format(image.filename))}}" />
+      <div class="image-label" title="{{ image.filename }}">{{ image.filename }}</div>
     </div>
-  </body>
-</html>
+  </div>
+  <pre><code>{{ image.dicom_data }}</code></pre>
+</div>
+{% endblock %}
